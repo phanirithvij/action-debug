@@ -4,6 +4,23 @@ Remote Access your GitHub Actions via Browser Based Terminal. Built using
 [ttyd](https://github.com/tsl0922/ttyd) and
 [Cloudflare tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/)
 
+## TODO
+
+- [ ] nixify + magic-nix-cache
+  - why nixify? keep it groovy for macos and linux
+- [ ] keep a non-nix way of doing it as well
+  - does this require a new repo?
+  - why? nix installation, nixpkgs fetching, eval takes time
+- [ ] ngrok + tmate as the default option
+  - why ngrok? tmate.io is
+    [discontinued](https://github.com/tmate-io/tmate/issues/322#issuecomment-3083217834),
+    need a way to expose a tcp port which cloudflared doesn't support
+  - why tmate? because ttyd + browser can't be tmuxed
+  - why still ttyd? backup/mobile
+  - how is this method secure, ttyd method has a password?
+    - https://github.com/mxschmitt/action-tmate
+- [ ] navi cheats for gh cli commands for workflow_dispatch
+
 ## Features
 
 - Debug your GitHub Actions by Remote Accessing your Github Action Runner
@@ -38,7 +55,7 @@ Set credentials in "user:password" format
 steps:
   - uses: phanirithvij/action-debug@main
     with:
-      credentials: "user:password"
+      credentials: "user:password" # Put one in github secrets
 ```
 
 ## Resume a workflow
